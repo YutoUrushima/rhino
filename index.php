@@ -1,6 +1,18 @@
 <?php
-include 'partial/head.php'; ?>
+include 'partial/head.php';
+include 'db.php';
+
+$pdo = new ConnectDB();
+
+$sql = '
+    SELECT * FROM users;
+';
+
+$result = $pdo->execute($sql);
+?>
     <div class="container">
-        <h1>Index</h1>
+        <p><?php foreach ($result as $value) {
+            echo $value['name'];
+        } ?></p>
     </div>
 <?php include 'partial/footer.php';
