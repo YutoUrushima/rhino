@@ -1,6 +1,5 @@
 <?php
-    include 'partial/head.php';
-?>
+include 'partial/head.php'; ?>
     <div class="container">
         <h1>Sign up</h1>
         <form>
@@ -15,5 +14,4 @@
             <button type="submit" class="btn btn-primary">Submit</button>
         </form>
     </div>
-<?php
-    include 'partial/footer.php';
+<?php include 'partial/footer.php';

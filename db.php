@@ -1,22 +1,32 @@
 <?php
-    require './vendor/autoload.php';
-    Dotenv\Dotenv::createImmutable(__DIR__)->load();
+require './vendor/autoload.php';
+Dotenv\Dotenv::createImmutable(__DIR__)->load();
 
-    $dsn = "mysql:dbname=".$_ENV['DB_NAME'].";host=localhost;";
-    $user = $_ENV['DB_USER'];
-    $password = $_ENV['DB_PASSWORD'];
+$dsn = 'mysql:dbname=' . $_ENV['DB_NAME'] . ';host=localhost;';
+$user = $_ENV['DB_USER'];
+$password = $_ENV['DB_PASSWORD'];
 
-    try {
-        $pdo = new PDO($dsn, $user, $password);
+try {
+    $pdo = new PDO($dsn, $user, $password);
 
-        $query = "SELECT * FROM users";
-        $stmt = $pdo->query($query);
+    $query = 'SELECT * FROM users';
+    $stmt = $pdo->query($query);
 
-        while($row = $stmt->fetch(PDO::FETCH_ASSOC)){
-            echo $row["name"];
-        }
-    } catch(PDOException $error) {
-        echo $error;
+    while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
+        echo $row['name'];
     }
-    
-    $pdo = null;
+} catch (PDOException $error) {
+    echo $error;
+}
+
+$pdo = null;
+
+class ConnectDB
+{
+    public function pdo()
+    {
+        $dsn = 'mysql:dbname=' . $_ENV['DB_NAME'] . ';host=localhost;';
+        $user = $_ENV['DB_USER'];
+        $password = $_ENV['DB_PASSWORD'];
+    }
+}
