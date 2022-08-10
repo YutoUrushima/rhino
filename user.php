@@ -5,7 +5,7 @@ include 'db.php';
 $pdo = new ConnectDB();
 
 $sql = 'SELECT * FROM articles WHERE user_id = "' . $_SESSION['current_user'] . '";';
-$contents = $pdo->execute($sql);
+$contents = $pdo->select($sql);
 ?>
 <div class="container">
     <h1>Articles</h1>

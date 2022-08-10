@@ -4,12 +4,18 @@ Dotenv\Dotenv::createImmutable(__DIR__)->load();
 
 class ConnectDB
 {
-    public function execute($sql)
+    public function select($sql)
     {
         $stmt = $this->pdo()->prepare($sql);
         $stmt->execute();
         $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
         return $result;
+    }
+    public function insert($sql)
+    {
+        $stmt = $this->pdo()->prepare($sql);
+        $stmt->execute();
+        return true;
     }
     private function pdo()
     {

@@ -8,7 +8,7 @@ $sql = '
     SELECT * FROM users;
 ';
 
-$result = $pdo->execute($sql);
+$result = $pdo->select($sql);
 ?>
     <div class="container">
         <p><?php foreach ($result as $value) {
