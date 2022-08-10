@@ -1,3 +1,5 @@
+<?php
+session_start(); ?>
 <!DOCTYPE html>
 <html lang="ja">
 <head>
@@ -10,6 +12,8 @@
 <header class="d-flex bg-light">
     <h1 class="p-3">Rhino</h1>
     <nav>
-        <ul></ul>
+        <ul>
+            <li><?php echo $_SESSION['current_user'] ? 'id: ' . $_SESSION['current_user'] : ''; ?></li>
+        </ul>
     </nav>
 </header>

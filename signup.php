@@ -2,7 +2,7 @@
 include 'partial/head.php'; ?>
     <div class="container">
         <h1>Sign up</h1>
-        <form action="user.php" method="post">
+        <form action="verify.php" method="post">
             <div class="mb-3">
                 <label class="form-label" for="signupID">ID</label>
                 <input class="form-control" type="email" name="signup_id" id="signupID"/>

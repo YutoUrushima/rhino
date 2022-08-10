@@ -1,17 +1,20 @@
 <?php
+include 'partial/head.php';
 include 'db.php';
 
 $pdo = new ConnectDB();
-$email = htmlspecialchars($_POST['signup_id'], ENT_QUOTES, 'UTF-8');
-$password = htmlspecialchars($_POST['signup_password'], ENT_QUOTES, 'UTF-8');
 
-$sql = 'SELECT email, password_hash FROM users WHERE email = "' . $email . '";';
-$user_info = $pdo->execute($sql);
-
-if (count($user_info) == 1) {
-    if ($user_info[0]['password_hash'] == hash('sha256', $password)) {
-        echo 'success';
-    } else {
-        echo 'false';
-    }
-}
+$sql = 'SELECT * FROM articles WHERE user_id = "' . $_SESSION['current_user'] . '";';
+$contents = $pdo->execute($sql);
+?>
+<div class="container">
+    <h1>Articles</h1>
+    <div class="row">
+        <?php foreach ($contents as $content) { ?>
+            <h2><?php echo $content['title']; ?></h2>
+            <p><?php echo $content['created_at']; ?></p>
+            <p><?php echo $content['content']; ?></p>
+        <?php } ?>
+    </div>
+</div>
+<?php include 'partial/footer.php';
