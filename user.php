@@ -1,6 +1,6 @@
 <?php
 include 'partial/head.php';
-include 'db.php';
+include 'lib/db.php';
 
 $pdo = new ConnectDB();
 
@@ -16,6 +16,6 @@ $contents = $pdo->select($sql);
             <p><?php echo $content['content']; ?></p>
         <?php } ?>
     </div>
-    <a class="btn btn-primary" href="/add_article" role="button">Add Article</a>
+    <a class="btn btn-primary" href="/article" role="button">Add Article</a>
 </div>
 <?php include 'partial/footer.php';

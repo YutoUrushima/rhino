@@ -1,5 +1,5 @@
 <?php
-include 'db.php';
+include __DIR__ . '/../lib/db.php';
 session_start();
 
 $pdo = new ConnectDB();
@@ -12,7 +12,7 @@ $user_info = $pdo->select($sql);
 if (count($user_info) == 1) {
     if ($user_info[0]['password_hash'] == hash('sha256', $password)) {
         $_SESSION['current_user'] = $user_info[0]['id'];
-        header('Location: /');
+        header('Location: /user');
         exit();
     } else {
         echo 'false';
