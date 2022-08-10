@@ -8,7 +8,8 @@ class ConnectDB
     {
         $stmt = $this->pdo()->prepare($sql);
         $stmt->execute();
-        return $stmt;
+        $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
+        return $result;
     }
     private function pdo()
     {
