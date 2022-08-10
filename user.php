@@ -16,5 +16,6 @@ $contents = $pdo->select($sql);
             <p><?php echo $content['content']; ?></p>
         <?php } ?>
     </div>
+    <a class="btn btn-primary" href="/add_article" role="button">Add Article</a>
 </div>
 <?php include 'partial/footer.php';
