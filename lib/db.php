@@ -17,6 +17,12 @@ class ConnectDB
         $stmt->execute();
         return true;
     }
+    public function update($sql)
+    {
+        $stmt = $this->pdo()->prepare($sql);
+        $stmt->execute();
+        return true;
+    }
     private function pdo()
     {
         $dsn = 'mysql:dbname=' . $_ENV['DB_NAME'] . ';host=' . $_ENV['DB_HOST'] . ';charset=' . $_ENV['DB_CHARSET'] . ';';

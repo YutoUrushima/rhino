@@ -2,7 +2,7 @@
 include 'partial/head.php'; ?>
 <div class="container">
     <h1>Add Article</h1>
-    <form action="/content_insert.php" method="post">
+    <form action="<?php __DIR__; ?>/system/content_insert.php" method="post">
         <div class="mb-3">
             <label class="form-label" for="title">Title</label>
             <input class="form-control" type="text" name="title" id="title"/>

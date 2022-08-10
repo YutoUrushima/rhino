@@ -1,7 +1,7 @@
 <?php
 include 'partial/head.php'; ?>
     <h1>Sign In</h1>
-    <form action="system/verify.php" method="post">
+    <form action="<?php __DIR__; ?>/system/verify.php" method="post">
         <div class="mb-3">
             <label class="form-label" for="signinID">ID</label>
             <input class="form-control" type="email" name="signin_id" id="signinID" placeholder="xxx@gmail.com"/>

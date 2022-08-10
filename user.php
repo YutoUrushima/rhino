@@ -7,15 +7,24 @@ $pdo = new ConnectDB();
 $sql = 'SELECT * FROM articles WHERE user_id = "' . $_SESSION['current_user'] . '";';
 $contents = $pdo->select($sql);
 ?>
-<div class="container">
-    <h1>Articles</h1>
-    <div class="row">
+    <h1 class="border-bottom pb-2">Articles</h1>
+    <div class="row mb-5">
         <?php foreach ($contents as $content) { ?>
-            <h2><?php echo $content['title']; ?></h2>
-            <p><?php echo $content['created_at']; ?></p>
-            <p><?php echo $content['content']; ?></p>
+            <article class="border-bottom py-3 d-flex justify-content-between align-items-center">
+                <div class="rhino-left">
+                    <div class="d-flex d-flex align-items-baseline">
+                        <h2 class="me-4"><?php echo $content['title']; ?></h2>
+                        <time><?php echo $content['created_at']; ?></time>
+                    </div>
+                    <div>
+                        <p><?php echo $content['content']; ?></p>
+                    </div>
+                </div>
+                <div class="rhino-right">
+                    <a class="btn btn-primary" href="/edit?id=<?php echo $content['id']; ?>" role="button">Edit</a>
+                </div>
+            </article>
         <?php } ?>
     </div>
     <a class="btn btn-primary" href="/article" role="button">Add Article</a>
-</div>
 <?php include 'partial/footer.php';

@@ -1,6 +1,6 @@
 <?php
-include 'partial/head.php';
-include 'db.php';
+include __DIR__ . '/../lib/db.php';
+session_start();
 
 $pdo = new ConnectDB();
 $email = htmlspecialchars($_POST['signup_id'], ENT_QUOTES, 'UTF-8');
