@@ -13,7 +13,7 @@ if (count($existing_user) > 0) {
     header('Location: /signup');
 }
 
-$create_sql = 'INSERT INTO users VALUEs (NULL, NULL, "' . $email . '", "' . hash('sha256', $password) . '", Now(), Now())';
+$create_sql = 'INSERT INTO users VALUEs (NULL, NULL, "' . $email . '", "' . hash('sha256', $password) . '", NULL, Now(), Now())';
 $execute_sql = $pdo->insert($create_sql);
 
 $get_id_sql = 'SELECT id FROM users WHERE email = "' . $email . '";';

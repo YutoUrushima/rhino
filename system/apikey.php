@@ -4,7 +4,6 @@ session_start();
 use Ramsey\Uuid\Uuid;
 
 $apikey = Uuid::uuid4()->toString();
-var_dump($apikey);
 
 $pdo = new ConnectDB();
 
