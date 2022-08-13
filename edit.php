@@ -1,6 +1,11 @@
 <?php
-include 'partial/head.php';
-include 'lib/db.php';
+include_once __DIR__ . '/partial/head.php';
+include_once __DIR__ . '/lib/db.php';
+include_once __DIR__ . '/lib/session.php';
+
+$session = new Session();
+
+$session->validate_current_user();
 
 if (!isset($_GET['id'])) {
     header('Location: /user');
@@ -26,4 +31,4 @@ $content = $pdo->select($sql);
         <button type="submit" class="btn btn-primary">Submit</button>
     </form>
 </div>
-<?php include 'partial/footer.php';
+<?php include_once __DIR__ . '/partial/footer.php';

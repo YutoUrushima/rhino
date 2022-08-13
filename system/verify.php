@@ -1,8 +1,10 @@
 <?php
-include __DIR__ . '/../lib/db.php';
-session_start();
+include_once __DIR__ . '/../lib/db.php';
+include_once __DIR__ . '/../lib/session.php';
 
 $pdo = new ConnectDB();
+$session = new Session();
+
 $email = htmlspecialchars($_POST['signin_id'], ENT_QUOTES, 'UTF-8');
 $password = htmlspecialchars($_POST['signin_password'], ENT_QUOTES, 'UTF-8');
 
@@ -11,7 +13,7 @@ $user_info = $pdo->select($sql);
 
 if (count($user_info) == 1) {
     if ($user_info[0]['password_hash'] == hash('sha256', $password)) {
-        $_SESSION['current_user'] = $user_info[0]['id'];
+        $session->create_current_user($user_info[0]['id']);
         header('Location: /user');
         exit();
     } else {

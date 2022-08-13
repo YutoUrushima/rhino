@@ -1,8 +1,12 @@
 <?php
-include 'partial/head.php';
-include 'lib/db.php';
+include_once __DIR__ . '/partial/head.php';
+include_once __DIR__ . '/lib/db.php';
+include_once __DIR__ . '/lib/session.php';
 
 $pdo = new ConnectDB();
+$session = new Session();
+
+$session->validate_current_user();
 
 $sql = 'SELECT * FROM articles WHERE user_id = "' . $_SESSION['current_user'] . '";';
 $contents = $pdo->select($sql);
@@ -40,4 +44,4 @@ $user_apikey = $pdo->select($user_sql)[0]['api_key'];
         <?php } ?>
     </div>
     <a class="btn btn-primary" href="/article" role="button">Add Article</a>
-<?php include 'partial/footer.php';
+<?php include_once __DIR__ . '/partial/footer.php';

@@ -1,6 +1,6 @@
 <?php
-include __DIR__ . '/../lib/db.php';
-include 'get_meta.php';
+include_once __DIR__ . '/../lib/db.php';
+include_once 'get_meta.php';
 
 $pdo = new ConnectDB();
 $meta = new GetMetadata(getallheaders());

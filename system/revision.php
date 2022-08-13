@@ -1,5 +1,5 @@
 <?php
-include __DIR__ . '/../lib/db.php';
+include_once __DIR__ . '/../lib/db.php';
 session_start();
 
 $pdo = new ConnectDB();

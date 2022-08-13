@@ -1,5 +1,10 @@
 <?php
-include 'partial/head.php'; ?>
+include_once __DIR__ . '/partial/head.php';
+include_once __DIR__ . '/lib/session.php';
+
+$session = new Session();
+$session->validate_current_user();
+?>
 <div class="container">
     <h1>Add Article</h1>
     <form action="<?php __DIR__; ?>/system/content_insert.php" method="post">
@@ -14,4 +19,4 @@ include 'partial/head.php'; ?>
         <button type="submit" class="btn btn-primary">Submit</button>
     </form>
 </div>
-<?php include 'partial/footer.php';
+<?php include_once __DIR__ . '/partial/footer.php';

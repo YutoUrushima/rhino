@@ -1,5 +1,7 @@
 <?php
-session_start(); ?>
+include_once __DIR__ . '/../lib/session.php';
+$session = new Session();
+?>
 <!DOCTYPE html>
 <html lang="ja">
 <head>
@@ -10,7 +12,7 @@ session_start(); ?>
 </head>
 <body>
     <header class="d-flex justify-content-around d-flex align-items-center bg-light">
-        <h1 class="p-3">Rhino</h1>
+        <h1 class="p-3"><a href="/" class="text-decoration-none text-dark">Rhino</a></h1>
         <nav>
             <ul class="list-unstyled d-flex fs-5">
                 <li class="me-2"><a href="/user" class="text-decoration-none">user</a></li>
@@ -18,7 +20,7 @@ session_start(); ?>
             </ul>
         </nav>
         <div>
-            <?php if (isset($_SESSION['current_user'])) { ?>
+            <?php if ($session->check_current_user()) { ?>
                 <a class="btn btn-primary" href="<?php __DIR__; ?>/system/logout" role="button">Log out</a>
             <?php } else { ?>
                 <a class="btn btn-primary" href="/signin" role="button">Sign in</a>

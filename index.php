@@ -1,5 +1,5 @@
 <?php
-include 'partial/head.php'; ?>
+include_once __DIR__ . '/partial/head.php'; ?>
     <div class="container d-flex justify-content-center align-items-center vw-100 vh-100">
         <div class="container text-center">
             <h1>Let's use <span class="text-danger">Rhino</span> Headless CMS!!</h1>
@@ -13,4 +13,4 @@ include 'partial/head.php'; ?>
             </div>
         </div>
     </div>
-<?php include 'partial/footer.php';
+<?php include_once __DIR__ . '/partial/footer.php';

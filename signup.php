@@ -1,5 +1,5 @@
 <?php
-include 'partial/head.php'; ?>
+include_once __DIR__ . '/partial/head.php'; ?>
     <h1>Sign Up</h1>
     <form action="<?php __DIR__; ?>/system/enroll.php" method="post">
         <div class="mb-3">
@@ -12,4 +12,4 @@ include 'partial/head.php'; ?>
         </div>
         <button type="submit" class="btn btn-primary">Signup</button>
     </form>
-<?php include 'partial/footer.php';
+<?php include_once __DIR__ . '/partial/footer.php';

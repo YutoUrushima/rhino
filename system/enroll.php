@@ -1,8 +1,10 @@
 <?php
-include __DIR__ . '/../lib/db.php';
-session_start();
+include_once __DIR__ . '/../lib/db.php';
+include_once __DIR__ . '/../lib/session.php';
 
 $pdo = new ConnectDB();
+$session = new Session();
+
 $email = htmlspecialchars($_POST['signup_id'], ENT_QUOTES, 'UTF-8');
 $password = htmlspecialchars($_POST['signup_password'], ENT_QUOTES, 'UTF-8');
 
@@ -20,7 +22,7 @@ $get_id_sql = 'SELECT id FROM users WHERE email = "' . $email . '";';
 $user_id = $pdo->select($get_id_sql)[0]['id'];
 
 if ($execute_sql) {
-    $_SESSION['current_user'] = $user_id;
+    $session->create_current_user($user_id);
     header('Location: /user');
     exit();
 } else {
