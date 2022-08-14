@@ -14,5 +14,5 @@ Rhino is a Headless CMS Written in PHP.
 You can get all your articles in JSON format.
 
 ```sh
-$ curl http://urushi.me/api/get_article -H 'X-Rhino-Apikey: {YOUR_APIKEY}'
+$ curl http://urushi.me/api/get_articles -H 'X-Rhino-Apikey: {YOUR_APIKEY}'
 ```
