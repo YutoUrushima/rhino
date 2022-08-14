@@ -15,6 +15,13 @@ $user_sql = 'SELECT api_key FROM users WHERE id = ' . $_SESSION['current_user'] 
 $user_apikey = $pdo->select($user_sql)[0]['api_key'];
 ?>
     <div class="mb-5">
+        <h2>Your Name</h2>
+        <form action="<?php __DIR__; ?>/system/update_name.php" method="post">
+            <input type="text" class="form-control p-3" name="name" value="<?php echo $session->get_current_user_name(); ?>"/>
+            <button type="submit" class="btn btn-primary mt-3">Update</button>
+        </form>
+    </div>
+    <div class="mb-5">
         <h2>API Key</h2>
         <?php if (is_null($user_apikey)) { ?>
             <div class="mt-2">
@@ -30,11 +37,18 @@ $user_apikey = $pdo->select($user_sql)[0]['api_key'];
             <article class="border-bottom py-3 d-flex justify-content-between align-items-center">
                 <div class="rhino-left">
                     <div class="d-flex d-flex align-items-baseline">
-                        <h2 class="me-4"><?php echo $content['title']; ?></h2>
-                        <time><?php echo $content['created_at']; ?></time>
+                        <h3 class="me-4 fs-1"><?php echo $content['title']; ?></h3>
+                        <time class="d-inline-flex mb-3 px-2 py-1 bg-success bg-opacity-10 border border-success border-opacity-10 rounded-2">
+                            <span class="material-symbols-outlined">edit</span>
+                            <?php echo $content['created_at']; ?>
+                        </time>
+                        <time class="d-inline-flex mb-3 px-2 py-1 bg-success bg-opacity-10 border border-success border-opacity-10 rounded-2 ms-3">
+                            <span class="material-symbols-outlined">update</span>
+                            <?php echo $content['updated_at']; ?>
+                        </time>
                     </div>
                     <div>
-                        <p><?php echo $content['content']; ?></p>
+                        <p class="fs-5"><?php echo $content['content']; ?></p>
                     </div>
                 </div>
                 <div class="rhino-right">

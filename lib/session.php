@@ -30,6 +30,24 @@ class Session
     }
     public function get_user_alias()
     {
-        return $_SESSION['current_user_alias'] ? $_SESSION['current_user_alias'] : null;
+        return $_SESSION['current_user_alias'];
+    }
+    public function has_current_user_name()
+    {
+        if (isset($_SESSION['current_user'])) {
+            $pdo = new ConnectDB();
+            $sql = 'SELECT name FROM users WHERE id = ' . $_SESSION['current_user'] . ';';
+            return isset($pdo->select($sql)[0]['name']);
+        } else {
+            return false;
+        }
+    }
+    public function get_current_user_name()
+    {
+        if ($this->has_current_user_name()) {
+            $pdo = new ConnectDB();
+            $sql = 'SELECT name FROM users WHERE id = ' . $_SESSION['current_user'] . ';';
+            return $pdo->select($sql)[0]['name'];
+        }
     }
 }
